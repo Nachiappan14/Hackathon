@@ -1,4 +1,4 @@
-pragma solidity >=0.4.2;
+pragma solidity >=0.5.1;
 
 contract Election {
     // Model a Candidate
@@ -27,13 +27,13 @@ contract Election {
     );
 
     constructor() public  {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+        addCandidate("Candidate 1","MLA");
+        addCandidate("Candidate 2","MLA");
     }
 
-    function addCandidate (string memory _name) private {
+    function addCandidate (string memory _name,string memory _position) private {
         candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, "MLA", 0);
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, _position, 0);
     }
 
     function concat(string memory _base, string memory _value) internal returns (string memory) {
@@ -57,7 +57,7 @@ contract Election {
         return string(_newValue);
     }
 
-    function vote (uint _candidateId, string memory _category) public {
+    function vote (uint _candidateId) public {
         // require that they haven't voted before
         require(!voters[msg.sender]);
         // .concat(_category)]);
