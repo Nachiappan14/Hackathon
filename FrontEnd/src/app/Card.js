@@ -12,6 +12,7 @@ const Card = (props) => {
     history.push(path);
   }
   const {img,imgPath, altImage,Title,bgGradient,symbol,subTitle,content,rPath} = props;
+  const ref = React.createRef("dynamic-set-html");
   // const img = require(imgPath);
   return <div onClick={()=>{routeChange(rPath)}} className="col-md-4 stretch-card grid-margin">
   <div className={"card card-img-holder text-white " + bgGradient} >
@@ -21,7 +22,7 @@ const Card = (props) => {
       </h4>
       <h2 className="mb-5">{subTitle}</h2>
       {/* <h6 className="card-text">Closing in 2:05 hrs</h6> */}
-      <h6 className="card-text">{content}</h6>
+      <h6 className="card-text" ref={ref} dangerouslySetInnerHTML={{__html:content}}></h6>
     </div>
   </div>
 </div>

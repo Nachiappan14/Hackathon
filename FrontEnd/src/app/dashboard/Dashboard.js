@@ -3,7 +3,9 @@ import { ProgressBar } from 'react-bootstrap';
 import {Bar, Doughnut} from 'react-chartjs-2';
 import DatePicker from "react-datepicker";
 import Web3 from 'web3';
-import Card from '../Card'
+import Card from '../Card';
+import { useState, useEffect } from 'react';
+import model from '../data.json';
 
 export class Dashboard extends Component {
 
@@ -116,7 +118,34 @@ export class Dashboard extends Component {
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
+    console.log("========================================================");
+    console.log(model);
+    // this.renderData;
+    // fetch('../data.json',
+    // // {
+    // //   headers : { 
+    // //     'Content-Type': 'application/json',
+    // //     'Accept': 'application/json'
+    // //    }
+    // // }
+    // ).then(function(response){
+    //     console.log(response)
+    //     return response.json();
+    //   })
+    //   .then(function(myJson) {
+    //     console.log("MYJSON");
+    //     console.log(myJson);
+    //   });
   }
+  // getData()
+  // {
+  //   const [renderData,setRenderData] = useState({});
+    
+  // };
+  
+  // {
+  //   const [renderData,setRenderData] = useState({});
+  // }
   statusChangedHandler(event, id) {
 
     //const todoIndex = this.state.todos.findIndex( t => t.id === id );
@@ -162,116 +191,117 @@ export class Dashboard extends Component {
           inputValue: event.target.value
       });
   }
+
+  // componentDidMount(){
+  //   //your code
+  //   // var ctx = document.getElementById('visitSaleChart').getContext("2d")
+  //   // var gradientBar1 = ctx.createLinearGradient(0, 0, 0, 181)
+  //   // gradientBar1.addColorStop(0, 'rgba(218, 140, 255, 1)')
+  //   // gradientBar1.addColorStop(1, 'rgba(154, 85, 255, 1)')
+
+  //   // var gradientBar2 = ctx.createLinearGradient(0, 0, 0, 360)
+  //   // gradientBar2.addColorStop(0, 'rgba(54, 215, 232, 1)')
+  //   // gradientBar2.addColorStop(1, 'rgba(177, 148, 250, 1)')
+
+  //   // var gradientBar3 = ctx.createLinearGradient(0, 0, 0, 300)
+  //   // gradientBar3.addColorStop(0, 'rgba(255, 191, 150, 1)')
+  //   // gradientBar3.addColorStop(1, 'rgba(254, 112, 150, 1)')
+
+  //   // var gradientdonut1 = ctx.createLinearGradient(0, 0, 0, 181)
+  //   // gradientdonut1.addColorStop(0, 'rgba(54, 215, 232, 1)')
+  //   // gradientdonut1.addColorStop(1, 'rgba(177, 148, 250, 1)')
+
+  //   // var gradientdonut2 = ctx.createLinearGradient(0, 0, 0, 50)
+  //   // gradientdonut2.addColorStop(0, 'rgba(6, 185, 157, 1)')
+  //   // gradientdonut2.addColorStop(1, 'rgba(132, 217, 210, 1)')
+
+  //   // var gradientdonut3 = ctx.createLinearGradient(0, 0, 0, 300)
+  //   // gradientdonut3.addColorStop(0, 'rgba(254, 124, 150, 1)')
+  //   // gradientdonut3.addColorStop(1, 'rgba(255, 205, 150, 1)')
+
+
+
+  //   // const newVisitSaleData = {
+  //   //   labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'],
+  //   //   datasets: [
+  //   //     {
+  //   //       label: "CHN",
+  //   //       borderColor: gradientBar1,
+  //   //       backgroundColor: gradientBar1,
+  //   //       hoverBackgroundColor: gradientBar1,
+  //   //       legendColor: gradientBar1,
+  //   //       pointRadius: 0,
+  //   //       fill: false,
+  //   //       borderWidth: 1,
+  //   //       data: [20, 40, 15, 35, 25, 50, 30, 20]
+  //   //     },
+  //   //     {
+  //   //       label: "USA",
+  //   //       borderColor: gradientBar2,
+  //   //       backgroundColor: gradientBar2,
+  //   //       hoverBackgroundColor: gradientBar2,
+  //   //       legendColor: gradientBar2,
+  //   //       pointRadius: 0,
+  //   //       fill: false,
+  //   //       borderWidth: 1,
+  //   //       data: [40, 30, 20, 10, 50, 15, 35, 40]
+  //   //     },
+  //   //     {
+  //   //       label: "UK",
+  //   //       borderColor: gradientBar3,
+  //   //       backgroundColor: gradientBar3,
+  //   //       hoverBackgroundColor: gradientBar3,
+  //   //       legendColor: gradientBar3,
+  //   //       pointRadius: 0,
+  //   //       fill: false,
+  //   //       borderWidth: 1,
+  //   //       data: [70, 10, 30, 40, 25, 50, 15, 30]
+  //   //     }
+  //   //   ]
+  //   // }
+  //   // const newTrafficData = {
+  //   //   datasets: [{
+  //   //     data: [30, 30, 40],
+  //   //       backgroundColor: [
+  //   //         gradientdonut1,
+  //   //         gradientdonut2,
+  //   //         gradientdonut3
+  //   //       ],
+  //   //       hoverBackgroundColor: [
+  //   //         gradientdonut1,
+  //   //         gradientdonut2,
+  //   //         gradientdonut3
+  //   //       ],
+  //   //       borderColor: [
+  //   //         gradientdonut1,
+  //   //         gradientdonut2,
+  //   //         gradientdonut3
+  //   //       ],
+  //   //       legendColor: [
+  //   //         gradientdonut1,
+  //   //         gradientdonut2,
+  //   //         gradientdonut3
+  //   //       ]
+  //   //   }],
   
-  componentDidMount(){
-    //your code
-    // var ctx = document.getElementById('visitSaleChart').getContext("2d")
-    // var gradientBar1 = ctx.createLinearGradient(0, 0, 0, 181)
-    // gradientBar1.addColorStop(0, 'rgba(218, 140, 255, 1)')
-    // gradientBar1.addColorStop(1, 'rgba(154, 85, 255, 1)')
-
-    // var gradientBar2 = ctx.createLinearGradient(0, 0, 0, 360)
-    // gradientBar2.addColorStop(0, 'rgba(54, 215, 232, 1)')
-    // gradientBar2.addColorStop(1, 'rgba(177, 148, 250, 1)')
-
-    // var gradientBar3 = ctx.createLinearGradient(0, 0, 0, 300)
-    // gradientBar3.addColorStop(0, 'rgba(255, 191, 150, 1)')
-    // gradientBar3.addColorStop(1, 'rgba(254, 112, 150, 1)')
-
-    // var gradientdonut1 = ctx.createLinearGradient(0, 0, 0, 181)
-    // gradientdonut1.addColorStop(0, 'rgba(54, 215, 232, 1)')
-    // gradientdonut1.addColorStop(1, 'rgba(177, 148, 250, 1)')
-
-    // var gradientdonut2 = ctx.createLinearGradient(0, 0, 0, 50)
-    // gradientdonut2.addColorStop(0, 'rgba(6, 185, 157, 1)')
-    // gradientdonut2.addColorStop(1, 'rgba(132, 217, 210, 1)')
-
-    // var gradientdonut3 = ctx.createLinearGradient(0, 0, 0, 300)
-    // gradientdonut3.addColorStop(0, 'rgba(254, 124, 150, 1)')
-    // gradientdonut3.addColorStop(1, 'rgba(255, 205, 150, 1)')
-
-
-
-    // const newVisitSaleData = {
-    //   labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'],
-    //   datasets: [
-    //     {
-    //       label: "CHN",
-    //       borderColor: gradientBar1,
-    //       backgroundColor: gradientBar1,
-    //       hoverBackgroundColor: gradientBar1,
-    //       legendColor: gradientBar1,
-    //       pointRadius: 0,
-    //       fill: false,
-    //       borderWidth: 1,
-    //       data: [20, 40, 15, 35, 25, 50, 30, 20]
-    //     },
-    //     {
-    //       label: "USA",
-    //       borderColor: gradientBar2,
-    //       backgroundColor: gradientBar2,
-    //       hoverBackgroundColor: gradientBar2,
-    //       legendColor: gradientBar2,
-    //       pointRadius: 0,
-    //       fill: false,
-    //       borderWidth: 1,
-    //       data: [40, 30, 20, 10, 50, 15, 35, 40]
-    //     },
-    //     {
-    //       label: "UK",
-    //       borderColor: gradientBar3,
-    //       backgroundColor: gradientBar3,
-    //       hoverBackgroundColor: gradientBar3,
-    //       legendColor: gradientBar3,
-    //       pointRadius: 0,
-    //       fill: false,
-    //       borderWidth: 1,
-    //       data: [70, 10, 30, 40, 25, 50, 15, 30]
-    //     }
-    //   ]
-    // }
-    // const newTrafficData = {
-    //   datasets: [{
-    //     data: [30, 30, 40],
-    //       backgroundColor: [
-    //         gradientdonut1,
-    //         gradientdonut2,
-    //         gradientdonut3
-    //       ],
-    //       hoverBackgroundColor: [
-    //         gradientdonut1,
-    //         gradientdonut2,
-    //         gradientdonut3
-    //       ],
-    //       borderColor: [
-    //         gradientdonut1,
-    //         gradientdonut2,
-    //         gradientdonut3
-    //       ],
-    //       legendColor: [
-    //         gradientdonut1,
-    //         gradientdonut2,
-    //         gradientdonut3
-    //       ]
-    //   }],
-  
-    //   // These labels appear in the legend and in the tooltips when hovering different arcs
-    //   labels: [
-    //     'Search Engines',
-    //     'Direct Click',
-    //     'Bookmarks Click',
-    //   ]
-    // };
-    // this.setState({visitSaleData: newVisitSaleData, trafficData:newTrafficData} )
-  }
-
-
+  //   //   // These labels appear in the legend and in the tooltips when hovering different arcs
+  //   //   labels: [
+  //   //     'Search Engines',
+  //   //     'Direct Click',
+  //   //     'Bookmarks Click',
+  //   //   ]
+  //   // };
+  //   // this.setState({visitSaleData: newVisitSaleData, trafficData:newTrafficData} )
+  // }
 
   toggleProBanner() {
     document.querySelector('.proBanner').classList.toggle("hide");
   }
 
   render () {
+    // useEffect(()=>{
+    //   getData();
+    // },[])
     return (
       <div>
         {/* <div className="proBanner">
@@ -297,7 +327,25 @@ export class Dashboard extends Component {
           </nav>
         </div> */}
         <div className="row">
-          <Card 
+          {
+            model.dashboard.map((ele)=>{
+              // console.log(ele);
+              // const {key,img,imgPath, altImage,Title,bgGradient,symbol,subTitle,content,rPath} = ele;
+              return <Card 
+                key = {ele.key}
+                img = {require("../../assets/images/dashboard/circle.svg")}
+                imgPath={ele.imgPath}
+                altImage={ele.altImage}
+                Title= {ele.Title}
+                bgGradient = {ele.bgGradient}
+                symbol= {ele.symbol}
+                subTitle= {ele.subTitle}
+                content = {ele.content}
+                rPath = {ele.rPath}
+              />
+            })
+          }
+          {/* <Card 
             key = "1"
             img = {require("../../assets/images/dashboard/circle.svg")}
             imgPath="../../assets/images/dashboard/circle.svg"
@@ -308,22 +356,22 @@ export class Dashboard extends Component {
             subTitle="1"
             content = <div> Page for ongoing Elections </div>
             rPath = "/basic-ui/buttons"
-          />
-          <div className="col-md-4 stretch-card grid-margin">
+          /> */}
+          
+          {/* <div className="col-md-4 stretch-card grid-margin">
             <div className="card bg-gradient-danger card-img-holder text-white">
               <div className="card-body">
                 <img src={require("../../assets/images/dashboard/circle.svg")} className="card-img-absolute" alt="circle" />
                 <h4 className="font-weight-normal mb-3">Ongoing Elections <i className="mdi mdi-chart-line mdi-24px float-right"></i>
                 </h4>
                 <h2 className="mb-5">2</h2>
-                {/* <h4 className="mb-5">Vice Prefect</h4> */}
+                { <h4 className="mb-5">Vice Prefect</h4> }
                 <h6 className="card-text">SAC - Male</h6>
                 <h6 className="card-text">SAC - Female</h6>
-                {/* <h6 className="card-text">Vice Prefect</h6> */}
               </div>
             </div>
-          </div>
-          <div className="col-md-4 stretch-card grid-margin">
+          </div> */}
+          {/* <div className="col-md-4 stretch-card grid-margin">
             <div className="card bg-gradient-info card-img-holder text-white">
               <div className="card-body">
                 <img src={require("../../assets/images/dashboard/circle.svg")} className="card-img-absolute" alt="circle" />
@@ -341,7 +389,7 @@ export class Dashboard extends Component {
                 <h4 className="font-weight-normal mb-3">Number of Votes Counted <i className="mdi mdi-diamond mdi-24px float-right"></i>
                 </h4>
                 <h2 className="mb-5">45,5741</h2>
-                {/* <h6 className="card-text">Closing in 2:05 hrs</h6> */}
+                // { <h6 className="card-text">Closing in 2:05 hrs</h6> }
                 <h6 className="card-text">Account:{this.state.account}</h6>
               </div>
             </div>
@@ -352,7 +400,7 @@ export class Dashboard extends Component {
             <div className="card">
               
             </div>
-          </div>
+          </div> */}
           {/* <div className="col-md-5 grid-margin stretch-card"> */}
             {/* <div className="card"> */}
               {/* <div className="card-body">

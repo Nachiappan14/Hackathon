@@ -7,7 +7,7 @@ import Card from '../Card';
 import { useState, useEffect } from 'react';
 import model from '../data.json';
 
-export class OnGoingElections extends Component {
+export class ElectionResults extends Component {
 
   componentWillMount() {
     this.loadBlockchainData()
@@ -118,6 +118,8 @@ export class OnGoingElections extends Component {
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
+    this.len = model["election-results"].length;
+    console.log(this.len);
     console.log("========================================================");
     console.log(model);
     // this.renderData;
@@ -302,6 +304,9 @@ export class OnGoingElections extends Component {
     // useEffect(()=>{
     //   getData();
     // },[])
+
+    if(this.len<1){ return (<>Return Back Later For results</>)}
+    else{
     return (
       <div>
         {/* <div className="proBanner">
@@ -326,9 +331,10 @@ export class OnGoingElections extends Component {
             </ul>
           </nav>
         </div> */}
+        
         <div className="row">
           {
-            model['on-going'].map((ele)=>{
+            model["election-results"].map((ele)=>{
               console.log(ele);
               // const {key,img,imgPath, altImage,Title,bgGradient,symbol,subTitle,content,rPath} = ele;
               return <Card 
@@ -639,7 +645,7 @@ export class OnGoingElections extends Component {
           </div>
         </div> */}
       </div> 
-    );
+    );}
   }
 }
 const ListItem = (props) => {
@@ -658,4 +664,4 @@ const ListItem = (props) => {
       </li>
   )
 };
-export default OnGoingElections;
+export default ElectionResults;

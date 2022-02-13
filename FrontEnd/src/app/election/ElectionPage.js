@@ -7,80 +7,70 @@ import Card from '../Card';
 import { useState, useEffect } from 'react';
 import model from '../data.json';
 
-export class OnGoingElections extends Component {
+export class ElectionPage extends Component {
 
-  componentWillMount() {
-    this.loadBlockchainData()
-  }
-
-  async loadBlockchainData() {
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:7545")
-    const accounts = await web3.eth.getAccounts()
-    this.setState({ ...this.state, account: accounts[0] })
-  }
-
-  handleChange = date => {
-    this.setState({...this.state,
-      startDate: date
-    });
-  };
-  constructor(props){
-    super(props)
-    this.state = {
-      account: '',
-      startDate: new Date(),
-      visitSaleData: {},
+    
+    handleChange = date => {
+        this.setState({...this.state,
+            startDate: date
+        });
+    };
+    constructor(props){
+        super(props)
+        this.state = {
+            account: '',
+            startDate: new Date(),
+            visitSaleData: {},
       visitSaleOptions: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              display:false,
-              min: 0,
-              stepSize: 20,
-              max: 80
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                      display:false,
+                      min: 0,
+                      stepSize: 20,
+                      max: 80
             },
             gridLines: {
-              drawBorder: false,
-              color: 'rgba(235,237,242,1)',
-              zeroLineColor: 'rgba(235,237,242,1)'
+                drawBorder: false,
+                color: 'rgba(235,237,242,1)',
+                zeroLineColor: 'rgba(235,237,242,1)'
             }
-          }],
+        }],
           xAxes: [{
-            gridLines: {
-              display:false,
+              gridLines: {
+                  display:false,
               drawBorder: false,
               color: 'rgba(0,0,0,1)',
               zeroLineColor: 'rgba(235,237,242,1)'
             },
             ticks: {
-              padding: 20,
-              fontColor: "#9c9fa6",
-              autoSkip: true,
+                padding: 20,
+                fontColor: "#9c9fa6",
+                autoSkip: true,
             },
             categoryPercentage: 0.5,
             barPercentage: 0.5
         }]
-        },
-        legend: {
-          display: false,
-        },
-        elements: {
-          point: {
+    },
+    legend: {
+        display: false,
+    },
+    elements: {
+        point: {
             radius: 0
-          }
-        }
-      },
-      trafficData: {},
-      trafficOptions: {
+        }}
+    },
+    trafficData: {},
+    trafficOptions: {
         responsive: true,
         animation: {
-          animateScale: true,
-          animateRotate: true
+            animateScale: true,
+            animateRotate: true
         },
         legend: false,
-      },
-      todos: [
+    },
+    todos: [
         {
             id: 1,
             task: 'Pick up kids from school',
@@ -102,51 +92,54 @@ export class OnGoingElections extends Component {
             isCompleted: false
         },
         {
-            id: 5,
-            task: 'Call John',
-            isCompleted: true
-        },
-        {
-            id: 6,
-            task: 'Meeting with Alisa',
-            isCompleted: false
-        }
-      ],
-      inputValue: '',
+                id: 5,
+                task: 'Call John',
+                isCompleted: true
+            },
+            {
+                id: 6,
+                task: 'Meeting with Alisa',
+                isCompleted: false
+            }
+        ],
+        inputValue: '',
     }
     this.statusChangedHandler = this.statusChangedHandler.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
-    console.log("========================================================");
-    console.log(model);
+    this.networkURL = props.networkURL;
+    this.elecName = props.currElection;
+    // console.log("========================================================");
+    // console.log(model);
     // this.renderData;
     // fetch('../data.json',
     // // {
-    // //   headers : { 
-    // //     'Content-Type': 'application/json',
-    // //     'Accept': 'application/json'
-    // //    }
-    // // }
-    // ).then(function(response){
-    //     console.log(response)
-    //     return response.json();
-    //   })
-    //   .then(function(myJson) {
-    //     console.log("MYJSON");
-    //     console.log(myJson);
-    //   });
-  }
-  // getData()
-  // {
-  //   const [renderData,setRenderData] = useState({});
-    
-  // };
-  
-  // {
-  //   const [renderData,setRenderData] = useState({});
-  // }
-  statusChangedHandler(event, id) {
+        // //   headers : { 
+            // //     'Content-Type': 'application/json',
+            // //     'Accept': 'application/json'
+            // //    }
+            // // }
+            // ).then(function(response){
+                //     console.log(response)
+                //     return response.json();
+                //   })
+                //   .then(function(myJson) {
+                    //     console.log("MYJSON");
+                    //     console.log(myJson);
+                    //   });
+    }
+    componentWillMount() {
+        this.loadBlockchainData()
+    }
+
+    async loadBlockchainData() {
+        const web3 = new Web3(Web3.givenProvider || this.networkURL)
+        const accounts = await web3.eth.getAccounts()
+        this.setState({ ...this.state, account: accounts[0]})
+        console.log("accounts",accounts)
+    }
+    statusChangedHandler(event, id) {
 
     //const todoIndex = this.state.todos.findIndex( t => t.id === id );
     const todo = {...this.state.todos[id]};
@@ -328,7 +321,7 @@ export class OnGoingElections extends Component {
         </div> */}
         <div className="row">
           {
-            model['on-going'].map((ele)=>{
+            model[this.elecName].map((ele)=>{
               console.log(ele);
               // const {key,img,imgPath, altImage,Title,bgGradient,symbol,subTitle,content,rPath} = ele;
               return <Card 
@@ -341,6 +334,7 @@ export class OnGoingElections extends Component {
                 symbol= {ele.symbol}
                 subTitle= {ele.subTitle}
                 content = {ele.content}
+                // content = {this.state.account}
                 rPath = {ele.rPath}
               />
             })
@@ -658,4 +652,4 @@ const ListItem = (props) => {
       </li>
   )
 };
-export default OnGoingElections;
+export default ElectionPage;

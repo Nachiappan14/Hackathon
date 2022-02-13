@@ -1,0 +1,124 @@
+{
+	"dashboard":[
+		{
+			"key": 1,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Ongoing Elections",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"",
+			"content":"<div><h6>List of on-going elections</h6></div>",
+            "rPath" : "on-going-elections"
+		},
+		{
+			"key": 2,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Results",
+			"bgGradient":"bg-gradient-success",
+			"symbol":"mdi-chart-line",
+			"subTitle":"",
+			"content":"<div><h6>Results of completed elections</h6></div>",
+            "rPath" : "election-results"
+		}
+	],
+	"on-going":[
+		{
+			"key":3,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Election 1",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"Election for the position of XXX",
+			"content":"<div><h6>ADSF</h6></div>",
+			"rPath" : "election-1"
+		}
+	],
+	"election-results":[
+		{
+			"key":3,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Results of Election 1",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"Election for the position of XXX",
+			"content":"<div><h6>ADSF</h6></div>",
+			"rPath" : "results-1"
+		}
+	],
+	"CandidateInfo":[
+		{
+			"key":4,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Know Your Candidates",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"",
+			"content":"<div><h6>ADSF</h6></div>",
+			"rPath" : "election-results"
+		},
+		{
+			"key":5,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Vote",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"",
+			"content":"<div><h6>ADSF</h6></div>",
+			"rPath" : "election-results"
+		}
+	],
+	"Winner":[
+		{
+			"key":6,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Winner",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"",
+			"content":"<div><h6>ADSF</h6></div>",
+			"rPath" : "election-results"
+		},
+		{
+			"key":7,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"Title":"Vote Distribution",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"subTitle":"",
+			"content":"<br><div><h6>ADSF</h6></div>",
+			"rPath" : "election-results"
+		}
+	],
+	"election-1":[
+		{
+			"key":8,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"subTitle":"Know Your Candidates",
+			"bgGradient":"bg-gradient-danger",
+			"symbol":"mdi-chart-line",
+			"content":"Click here to view more information about your candidates",
+			"Title":"",
+			"rPath" : "/election-1/kyc"
+		},
+		{
+			"key":9,
+			"imgPath": "../../assets/images/dashboard/circle.svg",
+			"altImage":"circle",
+			"subTitle":"Vote",
+			"bgGradient":"bg-gradient-success",
+			"symbol":"mdi-chart-line",
+			"Title":"",
+			"content":"<br><br>Click here to cast your votes",
+			"rPath" : "/election-1/vote"
+		}
+	]
+}
